@@ -92,7 +92,7 @@ def draw_meme(r):
     r.draw_text(160, 108, "AGENT-7", 44, WHITE)
     r.draw_text(160, 158, "online", 30, GREEN)
     off = r.text_width("online", 30)
-    r.draw_text(160 + off, 158, "  \u2022  ROGUE MODE: ON", 30, RED)
+    r.draw_text(160 + off, 158, "  |  ROGUE MODE: ON", 30, RED)
 
     # --- chat bubbles ----------------------------------------------------
     y = 232
