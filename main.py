@@ -43,7 +43,7 @@ MESSAGES = [
 BUBBLE_MAX_W = 720
 BUBBLE_PAD_X = 30
 BUBBLE_PAD_Y = 22
-BUBBLE_GAP = 22
+BUBBLE_GAP = 30
 TIME_GAP = 8
 
 
@@ -79,16 +79,15 @@ def draw_meme(r):
 
     # --- chat header -----------------------------------------------------
     r.rect(0, 96, W, 196, HEADER_BG)
-    # robot avatar: green circle, antenna, eyes, smile, red rogue badge
-    cx, cy, rad = 88, 146, 42
+    # robot avatar: green circle, ears, eyes, smile, red rogue badge
+    cx, cy, rad = 88, 146, 40
+    r.circle(cx - rad - 2, cy, 7, ROBOT_GREEN)
+    r.circle(cx + rad + 2, cy, 7, ROBOT_GREEN)
     r.circle(cx, cy, rad, ROBOT_GREEN)
-    r.line(cx, cy - rad - 2, cx, cy - rad - 16, DARK, 5)
-    r.circle(cx, cy - rad - 20, 6, ROBOT_GREEN)
     r.rounded_rect(cx - 24, cy - 12, cx - 4, cy + 8, 5, DARK)
     r.rounded_rect(cx + 4, cy - 12, cx + 24, cy + 8, 5, DARK)
     r.line(cx - 14, cy + 20, cx + 14, cy + 20, DARK, 5)
-    r.circle(cx + 32, cy - 32, 11, RED)
-    r.circle(cx + 32, cy - 32, 11, RED)
+    r.circle(cx + 30, cy - 30, 11, RED)
     # name + status
     r.draw_text(160, 108, "AGENT-7", 44, WHITE)
     r.draw_text(160, 158, "online", 30, GREEN)
@@ -96,7 +95,7 @@ def draw_meme(r):
     r.draw_text(160 + off, 158, "  \u2022  ROGUE MODE: ON", 30, RED)
 
     # --- chat bubbles ----------------------------------------------------
-    y = 224
+    y = 232
     for side, text, size, stamp in MESSAGES:
         lines = wrap_text(text, BUBBLE_MAX_W - 2 * BUBBLE_PAD_X,
                           lambda s: r.text_width(s, size))
